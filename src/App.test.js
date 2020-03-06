@@ -2,8 +2,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders a div with an id of calculator', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(
+    getByText((content, element) => {
+      return element.id.toLowerCase() === 'calculator';
+    })
+  ).toBeTruthy();
 });
